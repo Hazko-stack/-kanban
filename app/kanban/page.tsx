@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { Plus, X, Edit, Save, Trash, Home } from 'lucide-react';
 import Link from 'next/link';
 
@@ -69,7 +69,7 @@ export default function KanbanPage() {
     localStorage.setItem('kanbanState', JSON.stringify(state));
   }, [state]);
 
-  const onDragEnd = (result: any) => {
+  const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId, type } = result;
 
     // If there's no destination or if the item was dropped back in the same place
@@ -310,7 +310,7 @@ export default function KanbanPage() {
         <header className="mb-8 flex justify-between items-center">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-indigo-800 mb-2">Kanban Board</h1>
-            <p className="text-gray-600">Drag and drop tasks to organize your workflow</p>
+            <p className="text-gray-600">Drag and drop tasks to organize your workflow&apos;s</p>
           </div>
           <Link href="/" className="px-4 py-2 rounded-md bg-white border border-indigo-300 text-indigo-600 flex items-center hover:bg-indigo-50 transition-colors">
             <Home size={18} className="mr-2" />
