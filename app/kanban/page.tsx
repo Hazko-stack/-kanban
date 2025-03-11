@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { Plus, X, Edit, Save, Trash, Home } from 'lucide-react';
 import Link from 'next/link';
 
@@ -69,7 +69,7 @@ export default function KanbanPage() {
     localStorage.setItem('kanbanState', JSON.stringify(state));
   }, [state]);
 
-  const onDragEnd = (result: any) => {
+  const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId, type } = result;
 
     // If there's no destination or if the item was dropped back in the same place
