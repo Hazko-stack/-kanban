@@ -304,6 +304,26 @@ export default function KanbanPage() {
     setEditingColumnTitle('');
   };
 
+  // Handle keydown for multiline input with shift+enter to submit
+  const handleTaskInputKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>, columnId: string) => {
+    // If shift+enter is pressed, submit the form
+    if (e.key === 'Enter' && e.shiftKey) {
+      e.preventDefault(); // Prevent the newline
+      addTask(columnId);
+    }
+    // Regular enter just adds a new line (default behavior for textarea)
+  };
+
+  // Handle keydown for editing task content
+  const handleEditingTaskKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    // If shift+enter is pressed, save the edit
+    if (e.key === 'Enter' && e.shiftKey) {
+      e.preventDefault();
+      saveEditingTask();
+    }
+    // Regular enter just adds a new line
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 p-4 md:p-8">
       <div className="max-w-screen-xl mx-auto">
@@ -326,6 +346,12 @@ export default function KanbanPage() {
             onChange={(e) => setNewColumnTitle(e.target.value)}
             placeholder="New column title..."
             className="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-grow max-w-xs"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && e.shiftKey) {
+                e.preventDefault();
+                addColumn();
+              }
+            }}
           />
           <button
             onClick={addColumn}
@@ -419,12 +445,13 @@ export default function KanbanPage() {
                                       >
                                         {editingTaskId === task.id ? (
                                           <div className="flex items-center">
-                                            <input
-                                              type="text"
+                                            <textarea
                                               value={editingTaskContent}
                                               onChange={(e) => setEditingTaskContent(e.target.value)}
                                               className="flex-grow px-2 py-1 border rounded-md"
                                               autoFocus
+                                              rows={2}
+                                              onKeyDown={handleEditingTaskKeyDown}
                                             />
                                             <button 
                                               onClick={saveEditingTask} 
@@ -435,7 +462,7 @@ export default function KanbanPage() {
                                           </div>
                                         ) : (
                                           <div className="flex justify-between items-start">
-                                            <p className="text-gray-800">{task.content}</p>
+                                            <p className="text-gray-800 whitespace-pre-line">{task.content}</p>
                                             <div className="flex space-x-1 ml-2">
                                               <button 
                                                 onClick={() => startEditingTask(task.id)} 
@@ -464,17 +491,13 @@ export default function KanbanPage() {
                           {/* Add task form */}
                           <div className="p-3 border-t mt-auto">
                             <div className="flex rounded-md shadow-sm">
-                              <input
-                                type="text"
-                                placeholder="Add a task..."
+                              <textarea
+                                placeholder="Add a task...(shift+enter to submit)"
                                 value={newTaskInputs[column.id] || ''}
                                 onChange={(e) => handleNewTaskInputChange(column.id, e.target.value)}
                                 className="flex-grow px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                                onKeyPress={(e) => {
-                                  if (e.key === 'Enter') {
-                                    addTask(column.id);
-                                  }
-                                }}
+                                onKeyDown={(e) => handleTaskInputKeyDown(e, column.id)}
+                                rows={2}
                               />
                               <button
                                 onClick={() => addTask(column.id)}

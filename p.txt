@@ -463,7 +463,7 @@ export default function KanbanPage() {
                             <div className="flex rounded-md shadow-sm">
                               <input
                                 type="text"
-                                placeholder="Add a task..."
+                                placeholder="Add a task...(shift+enter to submit)"
                                 value={newTaskInputs[column.id] || ''}
                                 onChange={(e) => handleNewTaskInputChange(column.id, e.target.value)}
                                 className="flex-grow px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-indigo-500"
