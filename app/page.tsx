@@ -110,7 +110,7 @@ export default function HomePage() {
                 <LayoutGrid className="h-6 w-6 text-purple-600" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Customizable Boards</h3>
-              <p className="text-gray-700">Add new columns, rename them, and reorder everything to match your project's unique requirements.</p>
+              <p className="text-gray-700">Add new columns, rename them, and reorder everything to match your project&apos;s unique requirements. </p>
             </div>
             <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-lg shadow-md">
               <div className="bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
@@ -119,7 +119,7 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Persistent Storage</h3>
-              <p className="text-gray-700">Your board is automatically saved to your browser's local storage, so your work is never lost.</p>
+              <p className="text-gray-700">Your board is automatically saved to your browser&apos;s local storage, so your work is never lost.</p>
             </div>
           </div>
         </div>
