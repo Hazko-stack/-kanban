@@ -30,7 +30,7 @@ export default function HomePage() {
                 Organize Your Work with Ease
               </h2>
               <p className="text-lg text-gray-700 mb-8">
-              かおり kanban helps you manage your projects efficiently with a simple drag-and-drop Kanban board. Create tasks, organize workflows, and boost your productivity.
+              かおり (Kaori) kanban helps you manage your projects efficiently with a simple drag-and-drop Kanban board. Create tasks, organize workflows, and boost your productivity.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">

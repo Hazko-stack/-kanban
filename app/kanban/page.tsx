@@ -343,6 +343,7 @@ export default function KanbanPage() {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
                 className="flex flex-col md:flex-row flex-wrap md:flex-nowrap gap-6 overflow-x-auto pb-4"
+                style={{ minHeight: '350px' }}
               >
                 {state.columnOrder.map((columnId, index) => {
                   const column = state.columns[columnId];
@@ -354,7 +355,8 @@ export default function KanbanPage() {
                         <div
                           ref={provided.innerRef}
                           {...provided.draggableProps}
-                          className="bg-white rounded-lg shadow-md w-full md:w-80 flex-shrink-0 flex flex-col max-h-screen"
+                          className="bg-white rounded-lg shadow-md w-full md:w-80 flex-shrink-0 flex flex-col h-96"
+                          style={{ height: '350px' }}
                         >
                           {/* Column Header */}
                           <div
@@ -399,9 +401,10 @@ export default function KanbanPage() {
                               <div
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
-                                className={`p-2 flex-grow overflow-y-auto ${
+                                className={`p-2 overflow-y-auto ${
                                   snapshot.isDraggingOver ? 'bg-blue-50' : ''
                                 }`}
+                                style={{ height: 'calc(100% - 110px)' }}
                               >
                                 {tasks.map((task, index) => (
                                   <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -459,7 +462,7 @@ export default function KanbanPage() {
                           </Droppable>
 
                           {/* Add task form */}
-                          <div className="p-3 border-t">
+                          <div className="p-3 border-t mt-auto">
                             <div className="flex rounded-md shadow-sm">
                               <input
                                 type="text"
