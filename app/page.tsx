@@ -63,31 +63,64 @@ export default function HomePage() {
               </div>
             </div>
             <div className="md:w-1/2">
-              <div className="bg-white p-4 rounded-lg shadow-xl">
-                <div className="flex space-x-2 mb-3">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              {/* preview */}
+            <div className="bg-white p-4 rounded-lg shadow-xl">
+              <div className="flex space-x-2 mb-3">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              
+              {/* Hide on small screens, show on medium+ */}
+              <div className="hidden md:flex justify-around p-4 bg-gray-50 rounded-md">
+                <div className="w-1/3 bg-blue-50 rounded-md p-3 mx-1">
+                  <div className="bg-blue-500 text-white text-sm font-medium rounded py-1 px-2 mb-3">To Do</div>
+                  <div className="bg-white p-2 rounded shadow-sm mb-2 break-words">Project planning</div>
+                  <div className="bg-white p-2 rounded shadow-sm mb-2 break-words">UX research</div>
+                  <div className="bg-white p-2 rounded shadow-sm break-words">Content writing</div>
                 </div>
-                <div className="flex justify-around p-4 bg-gray-50 rounded-md">
-                  <div className="w-1/3 bg-blue-50 rounded-md p-3 mx-1">
-                    <div className="bg-blue-500 text-white text-sm font-medium rounded py-1 px-2 mb-3">To Do</div>
-                    <div className="bg-white p-2 rounded shadow-sm mb-2">Project planning</div>
-                    <div className="bg-white p-2 rounded shadow-sm mb-2">UX research</div>
-                    <div className="bg-white p-2 rounded shadow-sm">Content writing</div>
-                  </div>
-                  <div className="w-1/3 bg-amber-50 rounded-md p-3 mx-1">
-                    <div className="bg-amber-500 text-white text-sm font-medium rounded py-1 px-2 mb-3">In Progress</div>
-                    <div className="bg-white p-2 rounded shadow-sm mb-2">UI design</div>
-                    <div className="bg-white p-2 rounded shadow-sm">Frontend dev</div>
-                  </div>
-                  <div className="w-1/3 bg-green-50 rounded-md p-3 mx-1">
-                    <div className="bg-green-500 text-white text-sm font-medium rounded py-1 px-2 mb-3">Done</div>
-                    <div className="bg-white p-2 rounded shadow-sm mb-2">Wireframing</div>
-                    <div className="bg-white p-2 rounded shadow-sm">Project setup</div>
-                  </div>
+                <div className="w-1/3 bg-amber-50 rounded-md p-3 mx-1">
+                  <div className="bg-amber-500 text-white text-sm font-medium rounded py-1 px-2 mb-3">In Progress</div>
+                  <div className="bg-white p-2 rounded shadow-sm mb-2 break-words">UI design</div>
+                  <div className="bg-white p-2 rounded shadow-sm break-words">Frontend dev</div>
+                </div>
+                <div className="w-1/3 bg-green-50 rounded-md p-3 mx-1">
+                  <div className="bg-green-500 text-white text-sm font-medium rounded py-1 px-2 mb-3">Done</div>
+                  <div className="bg-white p-2 rounded shadow-sm mb-2 break-words">Wireframing</div>
+                  <div className="bg-white p-2 rounded shadow-sm break-words">Project setup</div>
                 </div>
               </div>
+              
+              {/* Show on small screens, hide on medium+ */}
+              <div className="md:hidden p-4 bg-gray-50 rounded-md">
+                <div className="flex justify-between items-center mb-3">
+                  <div className="bg-blue-500 text-white text-sm font-medium rounded py-1 px-2">To Do</div>
+                  <div className="bg-amber-500 text-white text-sm font-medium rounded py-1 px-2">In Progress</div>
+                  <div className="bg-green-500 text-white text-sm font-medium rounded py-1 px-2">Done</div>
+                </div>
+                <div className="bg-white p-3 rounded shadow-sm mb-3">
+                  <div className="flex justify-between mb-1">
+                    <span className="text-xs font-medium text-blue-500">To Do</span>
+                    <span className="text-xs">3 tasks</span>
+                  </div>
+                  <div className="text-sm">Project planning, UX research, Content writing</div>
+                </div>
+                <div className="bg-white p-3 rounded shadow-sm mb-3">
+                  <div className="flex justify-between mb-1">
+                    <span className="text-xs font-medium text-amber-500">In Progress</span>
+                    <span className="text-xs">2 tasks</span>
+                  </div>
+                  <div className="text-sm">UI design, Frontend dev</div>
+                </div>
+                <div className="bg-white p-3 rounded shadow-sm">
+                  <div className="flex justify-between mb-1">
+                    <span className="text-xs font-medium text-green-500">Done</span>
+                    <span className="text-xs">2 tasks</span>
+                  </div>
+                  <div className="text-sm">Wireframing, Project setup</div>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
